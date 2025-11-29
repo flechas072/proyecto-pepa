@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Estudiantes - PEPA</title>
+
+    <style>
+        /* ============================
+           ESTILO ELEGANTE VERDE + BLANCO
+           ============================ */
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f7f2;
+            padding: 20px;
+            margin: 0;
+            color: #1d3b22;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0f5e2b;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* BOTONES SUPER ELEGANTES */
+        a, button {
+            background: #0f5e2b;
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            transition: 0.3s ease;
+            display: inline-block;
+        }
+
+        a:hover, button:hover {
+            background: #0d4f25;
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        /* Enlaces simples dentro de acciones */
+        td a {
+            background: transparent !important;
+            color: #0f5e2b !important;
+            padding: 5px;
+            font-weight: bold;
+        }
+
+        td a:hover {
+            color: #0a3d1b !important;
+            text-decoration: underline;
+        }
+
+        /* TABLA ELEGANTE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #0f5e2b;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #d9e6d9;
+        }
+
+        tr:hover {
+            background: #eef6ee;
+            transition: 0.2s;
+        }
+
+        /* Botón de eliminar más elegante */
+        form button {
+            background: #b30000;
+            padding: 6px 14px;
+            color: white !important;
+            border-radius: 5px;
+        }
+
+        form button:hover {
+            background: #800000;
+            transform: scale(1.05);
+        }
+
+        .flash-messages {
+            list-style: none;
+            padding: 10px;
+        }
+
+        .flash-messages li {
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .success { background: #c4f7c4; color: #064d06; }
+        .error { background: #f7c4c4; color: #7a0b0b; }
+
+        /* CONTENEDOR DE BOTONES */
+        .top-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .top-buttons a {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Estudiantes</h1>
+    <p>Bienvenido: {{ usuario }}</p>
+
+    <div class="top-buttons">
+        <a href="{{ url_for('dashboard') }}">← Volver al Dashboard</a>
+        <a href="{{ url_for('estudiantes_nuevo') }}">+ Nuevo Estudiante</a>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for category, msg in messages %}
+            <li class="{{ category }}">{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cédula</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Programa</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for est in estudiantes %}
+            <tr>
+                <td>{{ est[0] }}</td>
+                <td>{{ est[1] }}</td>
+                <td>{{ est[2] }}</td>
+                <td>{{ est[3] }}</td>
+                <td>{{ est[4] }}</td>
+                <td>{{ est[5] }}</td>
+                <td>{{ est[6] or '' }}</td>
+
+                <td style="white-space: nowrap;">
+                    <a href="{{ url_for('estudiantes_editar', id_estudiante=est[0]) }}">Editar</a>
+
+                    <form action="{{ url_for('estudiantes_eliminar', id_estudiante=est[0]) }}" 
+                          method="post" 
+                          style="display:inline" 
+                          onsubmit="return confirm('¿Eliminar este estudiante?');">
+
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="8" style="text-align:center;">No hay estudiantes.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ "Agregar" if modo == "agregar" else "Editar" }} Sesión</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='sesiones_form.css') }}">
+</head>
+<body>
+
+<h2>{{ "Agregar" if modo == "agregar" else "Editar" }} Sesión de Asesoría</h2>
+
+<form method="POST">
+
+    <!-- Fecha -->
+    <label for="fecha">Fecha:</label><br>
+    <input type="date" name="fecha" id="fecha" required
+           value="{{ sesion[1] if modo == 'editar' else '' }}">
+    <br><br>
+
+    <!-- Hora inicio -->
+    <label for="hora_inicio">Hora inicio:</label><br>
+    <input type="time" name="hora_inicio" id="hora_inicio" required
+           value="{{ sesion[2] if modo == 'editar' else '' }}">
+    <br><br>
+
+    <!-- Hora fin -->
+    <label for="hora_fin">Hora fin:</label><br>
+    <input type="time" name="hora_fin" id="hora_fin" required
+           value="{{ sesion[3] if modo == 'editar' else '' }}">
+    <br><br>
+
+    <!-- Tema -->
+    <label for="tema">Tema:</label><br>
+    <input type="text" name="tema" id="tema" required
+           value="{{ sesion[4] if modo == 'editar' else '' }}">
+    <br><br>
+
+    <!-- Monitor -->
+    <label for="id_monitor">Monitor:</label><br>
+    <select name="id_monitor" id="id_monitor" required>
+        <option value="">Seleccione un monitor</option>
+        {% for m in monitores %}
+        <option value="{{ m[0] }}"
+            {% if modo == 'editar' and m[0] == sesion[5] %} selected {% endif %}>
+            {{ m[1] }}
+        </option>
+        {% endfor %}
+    </select>
+    <br><br>
+
+    <!-- Estudiante -->
+    <label for="id_estudiante">Estudiante:</label><br>
+    <select name="id_estudiante" id="id_estudiante" required>
+        <option value="">Seleccione un estudiante</option>
+        {% for e in estudiantes %}
+        <option value="{{ e[0] }}"
+            {% if modo == 'editar' and e[0] == sesion[6] %} selected {% endif %}>
+            {{ e[1] }}
+        </option>
+        {% endfor %}
+    </select>
+    <br><br>
+
+    <!-- Asignatura -->
+    <label for="id_asignatura">Asignatura:</label><br>
+    <select name="id_asignatura" id="id_asignatura" required>
+        <option value="">Seleccione una asignatura</option>
+        {% for a in asignaturas %}
+        <option value="{{ a[0] }}"
+            {% if modo == 'editar' and a[0] == sesion[7] %} selected {% endif %}>
+            {{ a[1] }}
+        </option>
+        {% endfor %}
+    </select>
+    <br><br>
+
+    <button type="submit">
+        {{ "Agregar" if modo == "agregar" else "Actualizar" }}
+    </button>
+</form>
+
+<br>
+<a href="{{ url_for('sesiones_list') }}">Volver a la lista</a>
+
+</body>
+</html>

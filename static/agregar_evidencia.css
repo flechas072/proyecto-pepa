@@ -1,0 +1,97 @@
+/* ======== ESTILOS GENERALES ======== */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 40px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 40px;
+}
+
+/* ======== FORMULARIO ======== */
+form {
+    width: 60%;
+    margin: 0 auto;
+    background: white;
+    padding: 35px 45px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #34495e;
+    margin-top: 20px;
+}
+
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #fdfdfd;
+    transition: 0.2s;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 4px rgba(52,152,219,0.5);
+}
+
+/* ======== BOTÓN ======== */
+button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 12px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #217dbb;
+    transform: translateY(-2px);
+}
+
+/* ======== ENLACE VOLVER ======== */
+p {
+    text-align: center;
+    margin-top: 25px;
+}
+
+p a {
+    font-weight: 600;
+    color: #2980b9;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Sesiones de Asesoría</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='sesiones.css') }}">
+
+</head>
+<body>
+
+<h2>Gestión de Sesiones de Asesoría</h2>
+
+<p>Usuario: {{ usuario }}</p>
+
+<a href="/sesiones/agregar">Agregar Sesión</a>
+<br><br>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Hora inicio</th>
+            <th>Hora fin</th>
+            <th>Tema</th>
+            <th>ID Monitor</th>
+            <th>ID Estudiante</th>
+            <th>ID Asignatura</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in sesiones %}
+        <tr>
+            <td>{{ s[0] }}</td>   <!-- id_sesion -->
+            <td>{{ s[1] }}</td>   <!-- fecha -->
+            <td>{{ s[2] }}</td>   <!-- hora_inicio -->
+            <td>{{ s[3] }}</td>   <!-- hora_fin -->
+            <td>{{ s[4] }}</td>   <!-- tema -->
+            <td>{{ s[5] }}</td>   <!-- id_monitor -->
+            <td>{{ s[6] }}</td>   <!-- id_estudiante -->
+            <td>{{ s[7] }}</td>   <!-- id_asignatura -->
+            <td>
+                <a href="/sesiones/editar/{{ s[0] }}">Editar</a> |
+                <a href="/sesiones/eliminar/{{ s[0] }}"
+                   onclick="return confirm('¿Seguro quieres eliminar esta sesión?');">
+                   Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<a href="/dashboard">Volver al menú</a>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Programas</title>
+
+    <style>
+        /* ======== ESTILOS GENERALES ======== */
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* ======== ENLACE AGREGAR ======== */
+        a.agregar-btn {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            background: #3498db;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        a.agregar-btn:hover {
+            background: #217dbb;
+            transform: translateY(-2px);
+        }
+
+        /* ======== TABLA ======== */
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+            font-weight: 600;
+            padding: 14px;
+            text-align: left;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover td {
+            background: #f9f9f9;
+        }
+
+        tbody tr:nth-child(even) td {
+            background: #fafafa;
+        }
+
+        /* ======== LINKS Y BOTONES ======== */
+        a {
+            color: #2980b9;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #1c638f;
+            text-decoration: underline;
+        }
+
+        button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #c0392b;
+        }
+
+        /* ======== BOTÓN VOLVER ======== */
+        .volver {
+            display: block;
+            width: fit-content;
+            margin: 40px auto;
+            background: #95a5a6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .volver:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Gestión de Programas</h2>
+
+<p>Usuario: {{ usuario }}</p>
+
+<a href="/programas/agregar" class="agregar-btn">Agregar Programa</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre del Programa</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for p in programas %}
+        <tr>
+            <td>{{ p[0] }}</td>
+            <td>{{ p[1] }}</td>
+            <td>
+
+                <a href="/programas/editar/{{ p[0] }}">Editar</a> |
+
+                <form action="/programas/eliminar/{{ p[0] }}" 
+                      method="POST"
+                      style="display:inline;">
+                    
+                    <button type="submit"
+                            onclick="return confirm('¿Seguro que deseas eliminar este programa?');">
+                        Eliminar
+                    </button>
+                </form>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="/dashboard" class="volver">Volver al menú</a>
+
+</body>
+</html>

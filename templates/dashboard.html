@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - PEPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido {{ usuario }}</h1>
+
+        <div class="options-container">
+            <a href="/estudiantes" class="option-card">Gestionar Estudiantes</a>
+            <a href="/programas" class="option-card">Gestionar Programas</a>
+            <a href="/asignaturas" class="option-card">Gestionar Asignaturas</a>
+            <a href="/sesiones" class="option-card">Gestionar Sesiones</a>
+            <a href="/evidencias" class="option-card">Gestionar Evidencias</a>
+            <a href="/logout" class="option-card">Salir</a>
+        </div>
+    </div>
+</body>
+</html>

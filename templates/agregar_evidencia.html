@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Evidencia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='agregar_evidencia.css') }}">
+</head>
+<body>
+    <h1>Agregar Nueva Evidencia</h1>
+
+    <form action="{{ url_for('agregar_evidencia') }}" method="post" enctype="multipart/form-data">
+    <label for="descripcion">Descripción:</label>
+    <textarea name="descripcion" id="descripcion" required></textarea>
+
+    <label for="archivo">Subir archivo:</label>
+    <input type="file" name="archivo" id="archivo" required>
+
+    <label for="id_sesion">Seleccionar sesión:</label>
+    <select name="id_sesion" id="id_sesion" required>
+        {% for sesion in sesiones %}
+            <option value="{{ sesion[0] }}">Sesión {{ sesion[0] }} - {{ sesion[1] }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Agregar evidencia</button>
+    </form>
+
+    <p><a href="{{ url_for('evidencias_list') }}">Volver a Evidencias</a></p>
+</body>
+</html>

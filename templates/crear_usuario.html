@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear usuario - PEPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body.center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* mismo fondo que login */
+            flex-direction: column;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            width: 350px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #2575fc;
+            outline: none;
+            box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+        }
+
+        button {
+            padding: 12px;
+            width: 95%;
+            background: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #6a11cb;
+            transform: translateY(-2px);
+        }
+
+        .volver {
+            background: #00c6ff;
+        }
+
+        .volver:hover {
+            background: #0072ff;
+        }
+
+        p {
+            font-size: 14px;
+        }
+    </style>
+
+</head>
+<body class="center">
+    <div class="card">
+        <h2>Crear usuario</h2>
+        {% if error %}
+        <p style="color:red">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+            <input name="nombre_usuario" placeholder="Usuario *" required>
+            <input name="contrasena" type="password" placeholder="Contraseña *" required>
+            <input name="nombre_completo" placeholder="Nombre completo">
+            <input name="email" type="email" placeholder="Correo electrónico">
+            <button type="submit">Registrar</button>
+        </form>
+
+        <br>
+
+        <!-- Botón de volver al login -->
+        <a href="/">
+            <button type="button" class="volver">Volver al login</button>
+        </a>
+    </div>
+</body>
+</html>

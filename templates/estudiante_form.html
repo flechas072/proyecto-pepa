@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% if modos=='nuevo' %}Nuevo Estudiante{% else %}Editar Estudiante{% endif %} - PEPA</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f5fdf7;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background: #0b6e4f;
+            color: white;
+            padding: 20px;
+            margin: 0 0 25px 0;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+
+        a {
+            display: inline-block;
+            margin-left: 30px;
+            color: #0b6e4f;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            width: 450px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        label {
+            font-size: 15px;
+            color: #063d2f;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            margin-bottom: 18px;
+            border: 1px solid #0b6e4f;
+            border-radius: 6px;
+            font-size: 15px;
+            background: #f7fff9;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #0b6e4f;
+            box-shadow: 0 0 6px rgba(11,110,79,0.4);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #0b6e4f;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            background: #09563d;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>{% if modos=='nuevo' %}Nuevo Estudiante{% else %}Editar Estudiante{% endif %}</h1>
+
+    <a href="{{ url_for('estudiantes_list') }}">← Volver a Estudiantes</a>
+
+    <form method="post">
+        <label>Nombre</label>
+        <input name="nombre" value="{{ estudiante[1] if estudiante else '' }}" required>
+
+        <label>Apellido</label>
+        <input name="apellido" value="{{ estudiante[2] if estudiante else '' }}" required>
+
+        <label>Cédula</label>
+        <input name="cedula" value="{{ estudiante[3] if estudiante else '' }}" required>
+
+        <label>Teléfono</label>
+        <input name="telefono" value="{{ estudiante[4] if estudiante else '' }}">
+
+        <label>Email</label>
+        <input name="email" value="{{ estudiante[5] if estudiante else '' }}">
+
+        <label>Programa</label>
+        <select name="id_programa">
+            {% for p in programas %}
+                <option value="{{ p[0] }}" {% if estudiante and estudiante[6]==p[0] %}selected{% endif %}>
+                    {{ p[1] }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">
+            {% if modos=='nuevo' %}Crear{% else %}Actualizar{% endif %}
+        </button>
+    </form>
+
+</body>
+</html>

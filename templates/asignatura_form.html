@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ modo|capitalize }} Asignatura</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='asignatura_form.css') }}">
+</head>
+<body class="form-page"> 
+    
+    <div class="page-container">
+        
+        <div class="data-card form-card">
+            
+            <header>
+                <h2>{{ modo|capitalize }} Asignatura</h2>
+            </header>
+
+            <form method="POST">
+
+                <div class="form-group">
+                    <label for="nombre">Nombre de la Asignatura:</label>
+                    <input type="text" id="nombre" name="nombre"
+                        value="{{ asignatura[1] if asignatura else '' }}" 
+                        placeholder="Ej. Matemáticas Discretas"
+                        required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="icon">💾</span> {{ modo|capitalize }}
+                    </button>
+                    
+                    <a href="/asignaturas" class="btn btn-secondary">
+                        <span class="icon">❌</span> Cancelar
+                    </a>
+                </div>
+
+            </form>
+            
+        </div>
+        
+    </div>
+
+</body>
+</html>

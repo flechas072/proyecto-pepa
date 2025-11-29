@@ -1,0 +1,202 @@
+/* ======== ESTILOS GENERALES ======== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #6a11cb, #2575fc, #00c6ff);
+    background-size: 300% 300%;
+    animation: fondoAnimado 10s infinite alternate ease-in-out;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes fondoAnimado {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* ======== BARRA SUPERIOR ======== */
+.top-bar {
+    width: 100%;
+    height: 65px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.top-bar .logo {
+    height: 45px;
+    width: auto;
+}
+
+/* ======== LOGIN & CREAR USUARIO ======== */
+
+body.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Tarjetas */
+.card {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    text-align: center;
+    width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 80px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* Inputs */
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    border-color: #2575fc;
+    outline: none;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+}
+
+/* Botones */
+button {
+    padding: 12px;
+    width: 95%;
+    background: #2575fc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #6a11cb;
+    transform: translateY(-2px);
+}
+
+a button {
+    background: #00c6ff;
+    margin-top: 10px;
+}
+
+a button:hover {
+    background: #0072ff;
+}
+
+/* Errores */
+.error {
+    background: #ffe5e5;
+    color: #d8000c;
+    padding: 10px;
+    border-left: 4px solid #d8000c;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* ======== DASHBOARD (panel principal) ======== */
+
+.container {
+    margin-top: 120px;
+    width: 90%;
+    max-width: 1000px;
+
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    text-align: center;
+}
+
+/* Título */
+h1 {
+    color: white;
+    font-size: 45px;
+    text-shadow: 0 5px 12px rgba(0,0,0,0.25);
+    margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Cuadros de opciones */
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Tarjetas de opciones */
+.option-card {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    color: white;
+    text-decoration: none;
+    padding: 35px 45px;
+    border-radius: 15px;
+
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+
+    width: 260px;
+    transition: all .3s ease;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.option-card:hover {
+    transform: translateY(-7px) scale(1.03);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.35);
+    background: linear-gradient(135deg, #6a11cb, #9f50ff);
+}
+
+.option-card:active {
+    transform: scale(0.97);
+}
+
+/* Centrado total del dashboard */
+body.dashboard {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(120deg, #4e54c8, #0d99ff);
+}
+
+/* Mantiene el contenedor centrado */
+.container {
+    margin: auto;
+}

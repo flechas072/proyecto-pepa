@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Programa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 40px;
+            color: #333;
+        }
+
+        .contenedor {
+            width: 400px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            background: #FF9800;
+            color: white;
+            padding: 12px;
+            border: none;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e68900;
+        }
+
+        .volver {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            background: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .volver:hover {
+            background: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Editar Programa</h2>
+
+<div class="contenedor">
+    <form action="/programas/actualizar/{{ programa[0] }}" method="POST">
+        <label>Nombre del programa:</label>
+        <input type="text" name="nombre_programa" value="{{ programa[1] }}" required>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    <a class="volver" href="/programas">Volver al menú</a>
+</div>
+
+</body>
+</html>

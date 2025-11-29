@@ -1,0 +1,130 @@
+/* --------------------------- */
+/* ESTILOS GENERALES */
+/* --------------------------- */
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Título */
+h2 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+/* Usuario */
+p {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Enlaces principales */
+a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #0056b3;
+}
+
+a:hover {
+    color: #003d80;
+}
+
+/* --------------------------- */
+/* BOTÓN “AGREGAR” */
+/* --------------------------- */
+
+a[href="/sesiones/agregar"] {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 10px 18px;
+    background: #007bff;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+a[href="/sesiones/agregar"]:hover {
+    background: #005ec4;
+}
+
+/* --------------------------- */
+/* TABLA */
+/* --------------------------- */
+
+table {
+    width: 95%;
+    margin: 25px auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background: #0056b3;
+    color: white;
+}
+
+thead th {
+    padding: 14px;
+    font-size: 15px;
+}
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+}
+
+/* Filas alternadas */
+tbody tr:nth-child(even) {
+    background: #f8f9fc;
+}
+
+/* Hover fila */
+tbody tr:hover {
+    background: #e9f1ff;
+    transition: 0.2s;
+}
+
+/* --------------------------- */
+/* ENLACES DE ACCIONES */
+/* --------------------------- */
+
+td a {
+    padding: 4px 6px;
+    color: #007bff;
+}
+
+td a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* --------------------------- */
+/* VOLVER AL MENÚ */
+/* --------------------------- */
+
+a[href="/dashboard"] {
+    display: inline-block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 8px 14px;
+    background: #6c757d;
+    color: white;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+a[href="/dashboard"]:hover {
+    background: #565e64;
+}

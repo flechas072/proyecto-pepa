@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Asignaturas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='asignaturas.css') }}">
+</head>
+<body>
+
+<div class="page-container">
+    
+    <header class="main-header">
+        <h1>📚 Gestión de Asignaturas</h1>
+        <div class="user-info">
+            Usuario: <strong>{{ usuario }}</strong>
+        </div>
+        <a class="btn btn-back" href="/dashboard">
+            <span class="icon">⬅</span> Volver al menú
+        </a>
+    </header>
+
+    <main class="data-card">
+        
+        <div class="data-header">
+            <h3>Listado de Asignaturas</h3>
+            <a class="btn btn-primary" href="/asignaturas/agregar">
+                <span class="icon">➕</span> Agregar Asignatura
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-id">ID</th>
+                        <th>Nombre de la Asignatura</th>
+                        <th class="col-actions">Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for a in asignaturas %}
+                    <tr>
+                        <td>{{ a[0] }}</td>
+                        <td>{{ a[1] }}</td>
+                        <td class="action-cell">
+                            <a class="btn-action btn-edit" href="/asignaturas/editar/{{ a[0] }}">
+                                Editar
+                            </a>
+                            <a class="btn-action btn-delete" href="/asignaturas/eliminar/{{ a[0] }}"
+                               onclick="return confirm('¿Seguro que deseas eliminar la asignatura: {{ a[1] }}?');">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3" class="empty-list">
+                            No hay asignaturas registradas.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+</div>
+</body>
+</html>

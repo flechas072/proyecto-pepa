@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Evidencias</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='evidencias.css') }}">
+</head>
+<body>
+    <h1>Evidencias de {{ usuario }}</h1>
+
+    {% if evidencias %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Sesión</th>
+                <th>Descripción</th>
+                <th>Archivo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ev in evidencias %}
+            <tr>
+                <td>{{ ev.id_evidencia }}</td>
+                <td>{{ ev.sesion }} - {{ ev.fecha }}</td>
+                <td>{{ ev.descripcion }}</td>
+                <td>
+                    {% if ev.enlace_documento %}
+                        {{ ev.enlace_documento.split('/')[-1] }}
+                        <br>
+                        <a href="{{ url_for('descargar', filename=ev.enlace_documento.split('/')[-1]) }}" download>
+                           📥 Descargar
+                        </a>
+                    {% else %}
+                        Sin archivo
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ url_for('editar_evidencia', id_evidencia=ev.id_evidencia) }}">Editar</a> |
+                    <a href="{{ url_for('eliminar_evidencia', id_evidencia=ev.id_evidencia) }}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No hay evidencias registradas.</p>
+    {% endif %}
+
+    <p class="agregar">
+        <a href="{{ url_for('agregar_evidencia') }}">Agregar nueva evidencia</a>
+    </p>
+
+
+    <!-- Botón de volver -->
+    <p>
+    <a href="/dashboard">
+        <button type="button">Volver al menú</button>
+    </a>
+    </p>
+
+</body>
+</html>
